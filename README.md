@@ -1,61 +1,33 @@
 # My Application
 
-A basic structure of a web application for web developers to develop upon and show their skills.
-
-### Please DO NOT mention any Company or Individual names in code, when forking, committing, branching, developing or completing the exercise. 
-
-# Dependancies
-> node ^10.15.3
-
-> grunt-cli ```npm install -g grunt-cli```
-
-# Get Started
-
-- Fork this repo
-- Clone your repo
-
-## Install dependancies
 ```
-npm i
-``` 
-
-## Build the app & watch
-```
-grunt dev
-```
-
-## Start application and server
-```
+npm install
+npm run build
 npm start
 ```
 
-## Creative assets  
-Look in ```./design-assets```
-
-### Fonts
-All free to download or include from [https://fonts.google.com/specimen/Libre+Franklin](https://fonts.google.com/specimen/Libre+Franklin) (Regular and ExtraLight)
-
-## Which Browsers/Devices or Virtualisation services did you check the application in?
-
-
-## Anything you want to tell us?
-- Assumptions?
-- Decisions?
-- What you used to develop and test?
-
-
 ## What did you think of this test/exercise?
+
 ### What did you like?
-1.
-2.
-3.
+
+1. I liked the idea of providing a sketch file
 
 ### What could be improved?
-1.
-2.
-3.
+
+1. Should be shortened from 9-10hrs to 3hrs of work
+2. The assignment leaves little room for individual creativity and demonstrating the more unique skills
+3. Sketch is only a Mac-only tool - I use Linux on my main PC. This meant I had to convert it to Figma to use it. Perhaps a Figma design would be a more sensible way of sharing it with candidates
 
 ### What didn't you like?
-1.
-2.
-3.
+
+1. Was long
+2. Wasn't challenging
+3. This project is 5 years old now and is pretty dated - it's not v relevant to modern web dev
+
+---
+
+If I'm honest, this test was very disappointing.
+
+It's largely put me off from working with the company and it shouldn't be like that.
+
+I understand that writing this is only likely to harm my chances of working at the company, but I feel like I have to get it off my chest as I can only imagine it must be putting other candidates off!

@@ -1,4 +1,3 @@
-import { initializeApollo } from "apollo/client";
 import Layout from "components/Layout";
 
 export default () => {
@@ -55,17 +54,3 @@ export default () => {
     </Layout>
   );
 };
-
-export async function getStaticProps() {
-  const apolloClient = initializeApollo();
-
-  await apolloClient.query({
-    query: ProductQuery,
-  });
-
-  return {
-    props: {
-      initialApolloState: apolloClient.cache.extract(),
-    },
-  };
-}

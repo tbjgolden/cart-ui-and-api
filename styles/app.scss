@@ -4,6 +4,7 @@
 // Due to time constraints this is a plain global SCSS solution
 
 @import "./reset.scss";
+@import "./fonts.scss";
 // ^ Global reset
 // v plus my personal preference reset
 * {
@@ -15,6 +16,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: "Libre Franklin", sans-serif;
 }
 
 button {
