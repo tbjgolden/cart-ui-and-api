@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.5.8",
+    "@react-aria/interactions": "^3.7.0",
+    "apollo-server-micro": "^2.14.2",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.12.6",
+    "ioredis": "^4.28.4",
+    "next": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.49.7",
+    "swr": "^1.0.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/ioredis": "^4.28.7",
+    "@types/node": "^17.0.14",
+    "@types/react": "^17.0.39",
+    "@types/uuid": "^8.3.4",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5"
+  }
+}
