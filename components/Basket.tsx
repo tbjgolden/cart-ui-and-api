@@ -1,11 +1,12 @@
 import { useMemo, useState } from "react";
 import { CartItem, Product } from "types";
 import BinIcon from "./BinIcon";
+import QuantityPicker from "./QuantityPicker";
 
 const penniesToPrice = (pennies: number): string => {
   return pennies < 100
     ? `${pennies}p`
-    : `£${Math.floor(pennies / 100)}.${pennies % 100}`;
+    : `£${Math.floor(pennies / 100)}.${`${pennies % 100}`.padStart(2, "0")}`;
 };
 
 export default ({
@@ -17,6 +18,16 @@ export default ({
   cartItems: CartItem[];
   setCartItems: (cartItems: CartItem[]) => void;
 }): JSX.Element => {
+  const subtotal = cartItems.reduce((sum, { sku, count }) => {
+    const product = products.find((p) => p.sku === sku);
+    if (product === undefined) {
+      return sum;
+    } else {
+      return sum + product.pennies * count;
+    }
+  }, 0);
+  const vat = Math.ceil(subtotal * 0.2);
+
   return (
     <div>
       <h1>Your Basket</h1>
@@ -39,15 +50,35 @@ export default ({
             <div className="checkout-price">
               {penniesToPrice(product.pennies)}
             </div>
-            <div className="checkout-quantity">{count}</div>
+            <div className="checkout-quantity">
+              <QuantityPicker
+                quantity={count}
+                setQuantity={(newCount) => {
+                  setCartItems(
+                    cartItems.map((cartItem) => {
+                      if (cartItem.sku === sku) {
+                        return {
+                          ...cartItem,
+                          count: newCount,
+                        };
+                      } else {
+                        return cartItem;
+                      }
+                    })
+                  );
+                }}
+                stockLevel={product.stockLevel ?? Infinity}
+              />
+            </div>
             <div className="checkout-cost">
               {penniesToPrice(product.pennies * count)}
             </div>
             <div className="checkout-remove">
               <button
                 onClick={() => {
-                  window.alert(`${product.sku} delete`);
-                  console.log(cartItems);
+                  setCartItems(
+                    cartItems.filter((cartItem) => cartItem.sku !== sku)
+                  );
                 }}
               >
                 <BinIcon />
@@ -60,21 +91,21 @@ export default ({
         <div className="checkout-product">Subtotal</div>
         <div className="checkout-price" />
         <div className="checkout-quantity" />
-        <div className="checkout-cost">£{222}</div>
+        <div className="checkout-cost">{penniesToPrice(subtotal)}</div>
         <div className="checkout-remove" />
       </div>
       <div className="checkout-row vat">
         <div className="checkout-product">VAT at 20%</div>
         <div className="checkout-price" />
         <div className="checkout-quantity" />
-        <div className="checkout-cost">£{111}</div>
+        <div className="checkout-cost">{penniesToPrice(vat)}</div>
         <div className="checkout-remove" />
       </div>
       <div className="checkout-row total">
         <div className="checkout-product">Total cost</div>
         <div className="checkout-price" />
         <div className="checkout-quantity" />
-        <div className="checkout-cost">£{333}</div>
+        <div className="checkout-cost">{penniesToPrice(subtotal + vat)}</div>
         <div className="checkout-remove" />
       </div>
       <div className="checkout-row buy-now">
@@ -82,7 +113,19 @@ export default ({
         <div className="checkout-price" />
         <div className="checkout-quantity" />
         <div className="checkout-cost">
-          <button>Buy Now</button>
+          <button
+            onClick={() => {
+              window.alert(
+                `Order Summary:\n\n${penniesToPrice(
+                  subtotal + vat
+                )}\n\n${cartItems
+                  .map(({ sku, count }) => `${count} x ${sku}`)
+                  .join("\n")}`
+              );
+            }}
+          >
+            Buy Now
+          </button>
         </div>
         <div className="checkout-remove" />
       </div>
