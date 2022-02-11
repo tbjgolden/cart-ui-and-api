@@ -14,7 +14,7 @@ npm start
 
 ### What could be improved?
 
-1. Should be shortened from 9-10hrs to 3hrs of work
+1. Should be shortened from 9-12hrs to 3hrs of work
 2. The assignment leaves little room for individual creativity and demonstrating the more unique skills
 3. Sketch is only a Mac-only tool - I use Linux on my main PC. This meant I had to convert it to Figma to use it. Perhaps a Figma design would be a more sensible way of sharing it with candidates
 
